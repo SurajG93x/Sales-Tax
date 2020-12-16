@@ -36,7 +36,7 @@ This is the point of contact that takes in user input in the form of the name of
 For example, the name of the file "input1.txt" will be input1.txt instead of just 'input1'.
 This can be changed later on to just name the file if we want a more scalable solution by adding the extension to it depending on the nature of the file.
 
-II.FileParser.py
+II.Parsing Files
 This class has three methods-
     LoadFile() method takes in the file directly received from main.py and parses ir constructing a list of items.
 Each line as assumed to have a specific format <quantity> <name of the product/item> 'at' <price>.
@@ -57,7 +57,7 @@ n items
 Total Tax: <total tax>
 Total: <total price with taxes included>
 
-III. Calculator.py
+III. Calculating taxes
     The method GenerateReceipt() needs 2 lists - one that is received from fileparser's loadfile method. And another list of of items that are tax exempt.
 It then goes through each element in the item list and does 2 operations on it. Firstly, it checks if there is a word "imported" in the name to see if it needs an Import duty attached to it.
 Next, it removes this word from the name temporarily and checks if the item qualifies for tax exemption by checking it against the list of exempt items.
@@ -67,5 +67,12 @@ First, it generates the string of each line in the receipt per item and appends 
 And finally, it generates another total of the overall price. It appends all of these to a list (where the first element is another list) and sends it back to the parser.
 I chose to create a list here since it made sense to just return one list for this project.
 In terms of scalability, this can later be expanded upon to iteratively call two separate functions to keep track of the running total and sales total.
+
+UPDATE: A new class for generating itemList has been created.
+Functionality from the LoadFile() method have been relocated to this class and split into two methods - GenerateItemList and CheckInputAuthenticity
+
+UPDATE 2: Another class for receipts has been created. It only has one method - GenerateReceipt
+
+UPDATE 3: Made SaveFile optional
 
 ##################################################################################################END##################################################################################################
